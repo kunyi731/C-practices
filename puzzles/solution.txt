@@ -1,0 +1,64 @@
+**************************************************************************
+*** 1.01 
+The problem is that sizeof() operator returns an unsigned number.
+
+*** 1.02
+"-" not allowed in variable names.
+
+*** 1.03
+Output is "1". Reason is that "continue" skips the rest of the loop and 
+start from the loop condition.
+
+From MSDN: http://msdn.microsoft.com/en-us/library/6e3dc2z3(v=vs.80).aspx
+
+Any remaining statements in the current iteration are not executed. 
+The next iteration of the loop is determined as follows:
+
+- In a do or while loop, the next iteration starts by reevaluating the 
+  controlling expression of the do or while statement.
+
+- In a for loop (using the syntax for(init-expr; cond-expr; loop-expr)),
+  continue causes loop-expr to be executed. Then cond-expr is reevaluated 
+  and, depending on the result, the loop either terminates or another 
+  iteration occurs.
+
+*** 1.04
+stdout is a (line) buffered stream, and only guarantees to flush when
+- a newline is put in
+- stream is closed
+- program exits
+- buffer is full
+- fflush() called
+
+*** 1.05
+h(f(1,2)) will be expanded to h(12) first, then g(12), then 12
+g(f(1,2)) will be expanded to #(f(1,2)) = f(1,2) 
+
+In the second case # preprocessor make the expansion before the argument
+expansion.
+
+" A parameter in the replacement list, unless preceded by a # or ## 
+preprocessing token or followed by a ## preprocessing token, is replaced
+by the corresponding argument after all macros contained therein have 
+been expanded. "
+
+*** 1.06
+Tricky question. Note "defau1t" spells wrong. Becomes a tag for GOTO.
+
+*** 1.07
+0x5 = 0b0101, first loop right shifts every bit 1 at even location by 1
+second loop right shifts 2 every 1 at "location divisible by 4"
+etc
+therefore if a bit is 1 at location x originally, it will be right shifted
+by x.
+
+*** 1.08
+floating point arithmetic may not be exact at all.
+float/double uses IEEE 754
+float: 23 bits of significand, 8bits exponent, 1 sign bit
+double: 52 bits of significand, 11 bits exponent, 1 sign bit
+in float 0.1f = 0.00011001100(1100..)
+so exponent is -4, and significand is (1)10011001100110011001100
+result value? 
+
+
